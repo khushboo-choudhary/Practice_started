@@ -1,0 +1,55 @@
+"First element to occur k times";
+"Given an array of N integers. Find the first element that occurs at least K number of times.";
+
+"Example 1:";
+
+Input: (N = 7), (K = 2);
+A = [1, 7, 4, 3, 4, 8, 7];
+Output: 4;
+// "Both 7 and 4 occur 2 times.
+// But 4 is first that occurs 2 times
+// As at index = 4, 4 has occurred
+// atleast 2 times whereas at index = 6,
+// 7 has occurred atleast 2 times."
+
+// Expected Time Complexity: O(N)
+// Expected Auxiliary Space: O(N)
+
+Explanation: function firstElementKTime(A, N, K) {
+  const frequencyMap = {};
+
+  for (let i = 0; i < N; i++) {
+    const element = arr[i];
+    frequencyMap[element] = (frequencyMap[element] || 0) + 1;
+    // Check if the count reaches K
+    if (frequencyMap[element] === K) {
+      console.log(element);
+      return element;
+    }
+  }
+  // No element found with count K
+  return -1;
+}
+
+("Second Method");
+
+function firstElementKTime(A, N, K) {
+  const frequencyCount = {};
+
+  for (let i = 0; i < N; i++) {
+    const element = A[i];
+    if (frequencyCount[element] === undefined) {
+      frequencyCount[element] = 1;
+    } else {
+      frequencyCount[element]++;
+    }
+
+    // Check if the count reaches K
+    if (frequencyCount[element] === K) {
+      return element;
+    }
+  }
+
+  // No element found with count K
+  return -1;
+}
