@@ -1,0 +1,52 @@
+// Sort an array of 0s, 1s and 2s
+// Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order.
+
+// Example 1:
+
+// Input:
+// N = 5;
+// arr = [0, 2, 1, 2, 0];
+// Output:
+// 0 0 1 2 2
+// Explanation:
+// 0s 1s and 2s are segregated
+// into ascending order.
+
+// Your Task:
+// You don't need to read input or print anything. Your task is to complete the function sort012() that takes an array arr and N as input parameters and sorts the array in-place.
+// Note : The given array will not be modified. You just have to create a new sorted array without using any extra space.
+
+// Expected Time Complexity: O(N)
+// Expected Auxiliary Space: O(1)
+
+// Solution;
+
+// function sort(){
+// arr.sort(function (a, b) {
+//   return a - b;
+// });
+// console.log(arr); // one test case failed time limited exceed problem.
+
+function sortArray(arr, N) {
+  let low = 0; // Pointer for 0s
+  let mid = 0; // Pointer for 1s
+  let high = N - 1; // Pointer for 2s
+
+  while (mid <= high) {
+    if (arr[mid] === 0) {
+      // Swap arr[low] and arr[mid]
+      [arr[low], arr[mid]] = [arr[mid], arr[low]];
+      low++;
+      mid++;
+    } else if (arr[mid] === 1) {
+      // No swap needed, move to the next element
+      mid++;
+    } else if (arr[mid] === 2) {
+      // Swap arr[mid] and arr[high]
+      [arr[mid], arr[high]] = [arr[high], arr[mid]];
+      high--;
+    }
+  }
+  return arr;
+}
+sortArray(arr, N)
