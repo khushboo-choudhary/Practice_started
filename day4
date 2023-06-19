@@ -1,0 +1,32 @@
+// Find all pairs with a given sum
+// Given two unsorted arrays A of size N and B of size M of distinct elements, the task is to find all pairs from both arrays whose sum is equal to X.
+// Input:
+// A[] = {1, 2, 4, 5, 7}
+// B[] = {5, 6, 3, 4, 8}
+// X = 9
+// Output:
+// 1 8
+// 4 5
+// 5 4
+// Explanation:
+// (1, 8), (4, 5), (5, 4) are the
+// pairs which sum to 9.
+
+// Expected Time Complexity: O(NLog(N))
+// Expected Auxiliary Space: O(N)
+
+// Solution
+
+function findPairsWithSum(A, B, X) {
+  const result = [];
+
+  for (let i = 0; i < A.length; i++) {
+    for (let j = 0; j < B.length; j++) {
+      if (A[i] + B[j] === X) {
+        result.push([A[i], B[j]]);
+      }
+    }
+  }
+
+  return result;
+}
